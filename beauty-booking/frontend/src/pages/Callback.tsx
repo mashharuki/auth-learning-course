@@ -20,7 +20,7 @@ const Callback = () => {
       }
     };
 
-    getAccessToken();
+    void getAccessToken();
   }, [navigate]);
 
   return (
