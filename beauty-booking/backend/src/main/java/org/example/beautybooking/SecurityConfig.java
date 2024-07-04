@@ -12,13 +12,23 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(
-        HttpSecurity httpSecurity,
-        AuthenticationSuccessHandler authenticationSuccessHandler
+            HttpSecurity httpSecurity,
+            CustomAuthenticationEntryPoint customAuthenticationEntryPoint,
+            AuthenticationSuccessHandler authenticationSuccessHandler
     ) throws Exception {
-        httpSecurity.oauth2Login(oauth2 -> oauth2
-                .successHandler(authenticationSuccessHandler)
-        );
+        httpSecurity
+                .oauth2Login(oauth2 -> oauth2
+                        .successHandler(authenticationSuccessHandler)
+                )
+                .authorizeHttpRequests(request -> request
+                        .requestMatchers("/api/**").authenticated()
+                        .anyRequest().permitAll()
+                )
+                .exceptionHandling(exceptionHandling -> exceptionHandling
+                                .authenticationEntryPoint(customAuthenticationEntryPoint)
+                )
+                .csrf(csrf -> csrf.disable())
+        ;
         return httpSecurity.build();
     }
 }
-
