@@ -32,10 +32,6 @@ export function SignInCard() {
           className="w-full"
           onClick={() => {
             signIn("google")
-            // signIn(
-            //   'cognito',
-            //   {identity_provider: 'Google'}
-            // )
           }
         }
         >
