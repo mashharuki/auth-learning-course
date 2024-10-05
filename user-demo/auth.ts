@@ -5,31 +5,24 @@ export const {auth, handlers, signIn, signOut} = NextAuth({
   providers: [
     Cognito({
         id: "cognito",
-        clientId: process.env.COGNITO_CLIENT_ID!,
-        clientSecret: process.env.COGNITO_CLIENT_SECRET!,
-        issuer: process.env.COGNITO_ISSUER!,
         checks: ['state', 'nonce'],
         authorization: {
           params: {
-            scope: "openid profile email",
+            scope: "openid email profile",
           }
         },
       },
     ),
     Cognito({
       id: "google",
-      clientId: process.env.COGNITO_CLIENT_ID!,
-      clientSecret: process.env.COGNITO_CLIENT_SECRET!,
-      issuer: process.env.COGNITO_ISSUER!,
       checks: ['state', 'nonce'],
       authorization: {
         params: {
           identity_provider: "Google",
-          scope: "openid profile email",
+          scope: "openid email profile",
         }
       },
     }),
   ],
   debug: true,
-  secret: process.env.NEXTAUTH_SECRET,
 })
