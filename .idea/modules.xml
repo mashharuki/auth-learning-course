@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ProjectModuleManager">
-    <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/auth-learning-course.iml" filepath="$PROJECT_DIR$/.idea/auth-learning-course.iml" />
-      <module fileurl="file://$PROJECT_DIR$/beauty-booking/frontend/frontend.iml" filepath="$PROJECT_DIR$/beauty-booking/frontend/frontend.iml" />
-    </modules>
-  </component>
-</project>

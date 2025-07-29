@@ -11,6 +11,10 @@ import {
 } from "@/components/ui/card"
 import {signIn} from "next-auth/react";
 
+/**
+ * SignICard コンポーネント
+ * @returns 
+ */
 export function SignInCard() {
   return (
     <Card className="w-[350px]">
