@@ -1,9 +1,30 @@
 # Cognitoを利用したOIDC,OAuth2.0学習用のサンプルプロジェクト
+
 ## 技術スタック
 - Next.js
 - Auth.js
 - AWS Cognito
 - idP Google
+
+## 動かし方
+
+`user-demo`フォルダ配下で実行すること
+
+```bash
+bun install
+```
+
+ビルド
+
+```bash
+bun run build
+```
+
+起動
+
+```bash
+bun run dev
+```
 
 ## 参考文献
 - [Next Auth.js Getting Started](https://next-auth.js.org/getting-started/example)
