@@ -6,6 +6,35 @@
 - AWS Cognito
 - idP Google
 
+## 環境変数の設定方法
+
+`user-demo/.env.local` を作成する。
+
+```bash
+cp .env.sample .env.local
+```
+
+以下の値を埋める。
+
+```txt
+AUTH_SECRET=
+AUTH_COGNITO_ID=
+AUTH_COGNITO_SECRET=
+AUTH_COGNITO_ISSUER=https://cognito-idp.{region}.amazonaws.com/{PoolId}
+```
+
+以下のコマンドを実行する
+
+```bash
+npx auth secret
+```
+
+これで `.env.local` に `AUTH_SECRET` の値が埋め込まれる
+
+`AUTH_COGNITO_ID` と `AUTH_COGNITO_SECRET` については、 Congnitoのマネジメントコンソール画面から取得する
+
+リージョンIDとプールIDもCongnitoのマネジメントコンソール画面から取得する
+
 ## 動かし方
 
 `user-demo`フォルダ配下で実行すること
