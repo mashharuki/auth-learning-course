@@ -6,6 +6,30 @@
 - AWS Cognito
 - idP Google
 
+## CognitoとGoogle Cloudeでやったこと
+
+- Google CloudのAuth Platform側で認証のセットアップを行う。
+  - IDプロバイダーとして使うためにクライアントIDとクライアントシークレットが必要
+  - 承認ずみリダイレクトURIとして`https://<プールID>.auth.ap-northeast-1.amazoncognito.com/oauth2/idpresponse`を指定する必要あり
+- AWSのCognitoのマネジメントコンソール画面で以下の作業を行う
+  - アプリケーションクライアントの作成を行う
+    - 属性権限で以下の項目を追加する
+      - custom:access_token: (goole側の属性としては access_tokenを指定する)
+    - ログインページのところで以下の項目を設定する
+      - 許可されているコールバックURLとして以下の2つを指定する
+        - http://localhost:3000/api/auth/callback/cognito
+        - http://localhost:3000/api/auth/callback/google
+      - idプロバイダーに以下を追加
+        - Google
+      - OpenID スコープ(idtokenに詰めたいデータ)を以下のように設定する
+        - openid
+        - email
+        - profile
+    - サインアップの欄で以下の属性を必須とする
+        - email
+        - name
+
+
 ## 環境変数の設定方法
 
 `user-demo/.env.local` を作成する。
@@ -156,6 +180,42 @@ authorization result {
   ]
 }
 ```
+
+## 動かした時のスクショ
+
+![](./docs/0.png)
+
+![](./docs/1.png)
+
+![](./docs/2.png)
+
+![](./docs/3.png)
+
+![](./docs/4.png)
+
+![](./docs/5.png)
+
+![](./docs/6.png)
+
+![](./docs/7.png)
+
+![](./docs/8.png)
+
+![](./docs/9.png)
+
+![](./docs/10.png)
+
+![](./docs/11.png)
+
+![](./docs/12.png)
+
+![](./docs/13.png)
+
+![](./docs/14.png)
+
+![](./docs/15.png)
+
+![](./docs/16.png)
 
 ## 参考文献
 - [Next Auth.js Getting Started](https://next-auth.js.org/getting-started/example)
